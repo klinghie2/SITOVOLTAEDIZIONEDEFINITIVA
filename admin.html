@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17211d">
+  <title>Amministrazione — VoltaPagina</title>
+  <style>
+    :root{--ink:#17211d;--ink-soft:#27352e;--paper:#f4f0e7;--white:#fffdf7;--lime:#d7f36a;--coral:#f2785b;--muted:#6f756b;--border:rgba(23,33,29,.18)}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}
+    button,input{font:inherit}button{cursor:pointer}.top{background:var(--ink);color:var(--paper);padding:17px 24px;display:flex;justify-content:space-between;align-items:center;gap:16px}.brand{display:flex;align-items:center;gap:11px}.mark{width:38px;height:38px;background:var(--lime);color:var(--ink);display:grid;place-items:center;font-size:23px;font-weight:950}.brand strong{display:block;font-size:12px;letter-spacing:.12em}.brand small{display:block;color:#c6c9c1;font-size:10px;letter-spacing:.12em;margin-top:3px}.top a{color:var(--lime);font-size:12px;text-decoration:none}
+    main{width:min(980px,calc(100% - 32px));margin:54px auto 80px}.eyebrow{font-size:10px;font-weight:850;letter-spacing:.17em;text-transform:uppercase;color:var(--muted)}h1{font-size:clamp(34px,6vw,58px);line-height:1;letter-spacing:-.06em;margin:10px 0 12px}.intro{color:#555d54;max-width:610px;margin:0 0 30px}.panel{background:var(--white);border:1px solid var(--ink);padding:clamp(20px,4vw,34px);box-shadow:7px 7px 0 var(--lime)}
+    .field{display:grid;gap:7px;margin-bottom:17px}.field label{font-size:10px;font-weight:850;letter-spacing:.1em;text-transform:uppercase}.field input{width:100%;border:1px solid #c9c8bd;background:#fff;padding:13px 12px;color:var(--ink);font-size:14px}.field input:focus{outline:2px solid var(--coral);outline-offset:2px}.btn{border:1px solid var(--ink);padding:12px 16px;font-size:11px;font-weight:850;letter-spacing:.04em;background:var(--ink);color:var(--paper)}.btn-lime{background:var(--lime);color:var(--ink)}.btn-outline{background:transparent;color:var(--ink)}.btn-danger{background:var(--coral);color:var(--ink)}.btn:disabled{opacity:.5;cursor:wait}.message{font-size:13px;margin-top:14px;min-height:20px}.error{color:#a33d2c}.success{color:#315c27}.hidden{display:none!important}
+    .toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:26px 0 16px}.counts{font-size:12px;color:var(--muted)}.listing{background:var(--white);border:1px solid var(--border);padding:20px;margin:12px 0}.listing-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.listing h3{font-size:19px;margin:0 0 4px;letter-spacing:-.03em}.meta{font-size:11px;color:var(--muted)}.status{display:inline-block;padding:5px 8px;background:#ece8dc;font-size:9px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}.status.pending{background:var(--yellow,#f4cd62)}.status.approved{background:var(--lime)}.status.rejected{background:#f6c0b4}.description{font-size:14px;white-space:pre-wrap;margin:16px 0}.details{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.tag{font-size:10px;padding:5px 8px;border:1px solid var(--border)}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:17px}.empty{padding:32px 18px;text-align:center;border:1px dashed var(--border);color:var(--muted);font-size:13px}.small-note{font-size:11px;color:var(--muted);margin-top:20px}
+    @media(max-width:560px){.top{padding:14px 16px}.top a{font-size:10px}main{margin-top:36px}.listing-head{display:block}.status{margin-top:10px}}
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="brand"><div class="mark">V.</div><div><strong>VOLTAPAGINA</strong><small>AREA AMMINISTRAZIONE</small></div></div>
+    <a href="./">← Torna al sito</a>
+  </header>
+  <main>
+    <div class="eyebrow">Gestione bacheca · Ripetizioni</div>
+    <h1>Annunci studenti.</h1>
+    <p class="intro">Area riservata per controllare gli annunci inviati e decidere quali rendere visibili nella bacheca pubblica.</p>
+
+    <section id="loginPanel" class="panel">
+      <h2 style="margin:0 0 7px;font-size:23px;letter-spacing:-.04em">Accedi</h2>
+      <p style="margin:0 0 22px;color:#62685f;font-size:13px">Usa l'account amministratore già creato su Supabase.</p>
+      <form id="loginForm">
+        <div class="field"><label for="email">Email</label><input id="email" type="email" autocomplete="username" required></div>
+        <div class="field"><label for="password">Password</label><input id="password" type="password" autocomplete="current-password" required></div>
+        <button id="loginButton" class="btn btn-lime" type="submit">ENTRA NEL PANNELLO →</button>
+      </form>
+      <div id="loginMessage" class="message" role="status" aria-live="polite"></div>
+    </section>
+
+    <section id="dashboard" class="hidden">
+      <div class="toolbar">
+        <div><strong id="welcome">Annunci</strong><div id="counts" class="counts"></div></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap"><button id="refreshButton" class="btn btn-outline" type="button">AGGIORNA</button><button id="logoutButton" class="btn" type="button">ESCI</button></div>
+      </div>
+      <div id="listMessage" class="message" role="status" aria-live="polite"></div>
+      <div id="listingList"></div>
+      <p class="small-note">Gli annunci approvati diventano leggibili nella bacheca pubblica. Il rifiuto non elimina il record dal database.</p>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    (() => {
+      const SUPABASE_URL = 'https://hnscptunijnslwqdhcep.supabase.co';
+      const SUPABASE_ANON_KEY = 'sb_publishable_NRoMU124oyT04I9kdUXAFw_Q1URP7EE';
+      const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+      const $ = (id) => document.getElementById(id);
+      const loginPanel = $('loginPanel');
+      const dashboard = $('dashboard');
+      let busy = false;
+
+      function setMessage(id, text, kind='') {
+        const el = $(id); el.textContent = text; el.className = 'message' + (kind ? ' ' + kind : '');
+      }
+      function escapeHTML(value) {
+        return String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+      }
+      function dateLabel(value) {
+        const date = new Date(value);
+        return Number.isNaN(date.getTime()) ? '' : date.toLocaleString('it-IT', {dateStyle:'medium',timeStyle:'short'});
+      }
+      function showLogin() { loginPanel.classList.remove('hidden'); dashboard.classList.add('hidden'); }
+      function showDashboard(email) { loginPanel.classList.add('hidden'); dashboard.classList.remove('hidden'); $('welcome').textContent = email || 'Amministrazione'; }
+
+      async function verifyAdmin(user) {
+        const { data, error } = await db.from('admin_users').select('user_id').eq('user_id', user.id).maybeSingle();
+        if (error) throw error;
+        if (!data) throw new Error('Questo account non risulta autorizzato come amministratore.');
+      }
+
+      async function loadListings() {
+        $('refreshButton').disabled = true;
+        setMessage('listMessage', 'Caricamento annunci…');
+        const { data, error } = await db.from('tutoring_posts')
+          .select('id, created_at, display_name, level, subject, mode, description, availability, terms, status')
+          .order('created_at', { ascending: false });
+        $('refreshButton').disabled = false;
+        if (error) { setMessage('listMessage', 'Errore nel caricamento: ' + error.message, 'error'); return; }
+        const rows = data || [];
+        const pending = rows.filter(x => x.status === 'pending').length;
+        $('counts').textContent = `${pending} in attesa · ${rows.length} annunci totali`;
+        setMessage('listMessage', rows.length ? '' : '');
+        const host = $('listingList'); host.replaceChildren();
+        if (!rows.length) { host.innerHTML = '<div class="empty">Non ci sono ancora annunci.</div>'; return; }
+        rows.forEach(row => {
+          const article = document.createElement('article'); article.className = 'listing';
+          const statusClass = ['pending','approved','rejected'].includes(row.status) ? row.status : '';
+          const details = [row.level, row.subject, row.mode === 'online' ? 'Online' : row.mode === 'presenza' ? 'In presenza' : row.mode === 'entrambi' ? 'Online e presenza' : ''].filter(Boolean);
+          article.innerHTML = `
+            <div class="listing-head"><div><h3>${escapeHTML(row.display_name || 'Studente')}</h3><div class="meta">Inviato il ${escapeHTML(dateLabel(row.created_at))}</div></div><span class="status ${statusClass}">${escapeHTML(row.status || 'sconosciuto')}</span></div>
+            <div class="details">${details.map(x => `<span class="tag">${escapeHTML(x)}</span>`).join('')}</div>
+            <p class="description">${escapeHTML(row.description)}</p>
+            ${row.availability ? `<div class="meta"><strong>Disponibilità:</strong> ${escapeHTML(row.availability)}</div>` : ''}
+            ${row.terms ? `<div class="meta" style="margin-top:7px"><strong>Accordi:</strong> ${escapeHTML(row.terms)}</div>` : ''}
+            <div class="actions"></div>`;
+          const actions = article.querySelector('.actions');
+          if (row.status === 'pending') {
+            const approve = document.createElement('button'); approve.className = 'btn btn-lime'; approve.type = 'button'; approve.textContent = 'APPROVA'; approve.addEventListener('click', () => updateStatus(row.id, 'approved', approve, reject));
+            const reject = document.createElement('button'); reject.className = 'btn btn-danger'; reject.type = 'button'; reject.textContent = 'RIFIUTA'; reject.addEventListener('click', () => updateStatus(row.id, 'rejected', approve, reject));
+            actions.append(approve, reject);
+          }
+          host.appendChild(article);
+        });
+      }
+
+      async function updateStatus(id, status, firstButton, secondButton) {
+        if (busy) return;
+        const verb = status === 'approved' ? 'approvare' : 'rifiutare';
+        if (!window.confirm(`Confermi di ${verb} questo annuncio?`)) return;
+        busy = true; if (firstButton) firstButton.disabled = true; if (secondButton) secondButton.disabled = true;
+        setMessage('listMessage', 'Salvataggio della modifica…');
+        const { error } = await db.from('tutoring_posts').update({ status }).eq('id', id);
+        busy = false;
+        if (error) {
+          setMessage('listMessage', 'Non è stato possibile aggiornare l’annuncio: ' + error.message, 'error');
+          if (firstButton) firstButton.disabled = false; if (secondButton) secondButton.disabled = false;
+          return;
+        }
+        setMessage('listMessage', status === 'approved' ? 'Annuncio approvato.' : 'Annuncio rifiutato.', 'success');
+        await loadListings();
+      }
+
+      $('loginForm').addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const button = $('loginButton'); button.disabled = true; setMessage('loginMessage', 'Accesso in corso…');
+        const { data, error } = await db.auth.signInWithPassword({ email: $('email').value.trim(), password: $('password').value });
+        button.disabled = false;
+        if (error) { setMessage('loginMessage', 'Accesso non riuscito: ' + error.message, 'error'); return; }
+        try {
+          await verifyAdmin(data.user);
+          showDashboard(data.user.email);
+          await loadListings();
+        } catch (err) {
+          await db.auth.signOut();
+          setMessage('loginMessage', err.message || 'Account non autorizzato.', 'error');
+          showLogin();
+        }
+      });
+      $('refreshButton').addEventListener('click', loadListings);
+      $('logoutButton').addEventListener('click', async () => { await db.auth.signOut(); showLogin(); setMessage('loginMessage', 'Hai effettuato la disconnessione.'); });
+
+      (async () => {
+        const { data: { session } } = await db.auth.getSession();
+        if (!session) return;
+        try { await verifyAdmin(session.user); showDashboard(session.user.email); await loadListings(); }
+        catch (err) { await db.auth.signOut(); showLogin(); setMessage('loginMessage', err.message || 'Sessione non autorizzata.', 'error'); }
+      })();
+    })();
+  </script>
+</body>
+</html>
