@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17211d">
+  <meta name="description" content="Informativa sul trattamento dei dati personali di VoltaPagina.">
+  <title>Privacy — VoltaPagina</title>
+  <style>
+    :root{--ink:#17211d;--paper:#f4f0e7;--white:#fffdf7;--lime:#d7f36a;--coral:#f2785b;--muted:#6f756b;--border:rgba(23,33,29,.16);--max:900px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.7 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+    a{color:#345c3c;text-decoration:underline;text-underline-offset:3px}a:hover{color:#a84934}
+    .top{min-height:76px;padding:16px max(22px,calc((100% - var(--max))/2));display:flex;align-items:center;justify-content:space-between;gap:18px;border-bottom:1px solid var(--border)}
+    .brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink)}.mark{width:39px;height:39px;display:grid;place-items:center;background:var(--ink);color:var(--lime);font-weight:950;font-size:24px}.brand strong{display:block;font-size:12px;letter-spacing:.12em}.brand small{display:block;margin-top:3px;color:var(--muted);font-size:9px;letter-spacing:.12em}
+    .back{font-size:12px;font-weight:750}
+    main{width:min(var(--max),calc(100% - 40px));margin:55px auto 90px}
+    .eyebrow{font-size:10px;font-weight:850;letter-spacing:.17em;text-transform:uppercase;color:var(--muted)}
+    h1{font-size:clamp(38px,7vw,68px);line-height:.98;letter-spacing:-.065em;margin:12px 0 18px}
+    .intro{max-width:730px;font-size:17px;color:#535a51}
+    .updated{display:inline-block;margin:10px 0 28px;padding:6px 9px;background:var(--lime);font-size:10px;font-weight:850;letter-spacing:.06em}
+    .quick{padding:20px 22px;margin:25px 0 42px;border:1px solid var(--ink);background:var(--white);box-shadow:6px 6px 0 var(--lime)}
+    .quick strong{display:block;margin-bottom:7px;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+    h2{margin:42px 0 12px;font-size:clamp(23px,4vw,31px);line-height:1.08;letter-spacing:-.045em}
+    h3{margin:22px 0 7px;font-size:17px;letter-spacing:-.02em}
+    p,li{font-size:14px}p{margin:8px 0 14px}ul{padding-left:22px}li{margin:6px 0}
+    .note{padding:15px 17px;margin:18px 0;background:#fff4d7;border-left:3px solid var(--coral)}
+    .contact{padding:22px;background:var(--ink);color:var(--paper);margin-top:38px}.contact a{color:var(--lime)}
+    footer{padding:20px;text-align:center;border-top:1px solid var(--border);font-size:10px;color:var(--muted)}
+    @media(max-width:560px){.top{padding:13px 18px}.brand small{font-size:8px}.back{font-size:10px}main{margin-top:38px}.quick{padding:16px}}
+  </style>
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="./"><span class="mark">V.</span><span><strong>VOLTAPAGINA</strong><small>PROGETTO STUDENTESCO INDIPENDENTE</small></span></a>
+    <a class="back" href="./">← TORNA AL SITO</a>
+  </header>
+  <main>
+    <div class="eyebrow">INFORMAZIONI SUI DATI PERSONALI</div>
+    <h1>Privacy, in parole chiare.</h1>
+    <p class="intro">Qui spieghiamo quali dati vengono utilizzati quando pubblichi un annuncio su VoltaPagina, perché servono, chi può vederli e come puoi chiederne la cancellazione.</p>
+    <span class="updated">Bozza — da verificare prima della pubblicazione</span>
+
+    <div class="quick">
+      <strong>In breve</strong>
+      <p>VoltaPagina è un progetto studentesco indipendente, non un sito ufficiale né un servizio gestito dalla scuola. I dati che inserisci per gli annunci vengono conservati tramite Supabase, con database e archivio principale in una regione di Francoforte, in Germania. Gli annunci approvati e i dati che scegli di rendere pubblici possono essere visti da chi visita il sito.</p>
+      <p>Non risultano installati strumenti pubblicitari o di profilazione. Alcune bozze e proposte vengono salvate soltanto nel browser del dispositivo e non vengono inviate al server.</p>
+    </div>
+
+    <h2>1. Chi gestisce i dati?</h2>
+    <p>Il titolare del trattamento indicato per il progetto è <strong>Prodan Alessandro</strong>, che gestisce personalmente VoltaPagina.</p>
+    <p>Per domande o richieste relative alla privacy puoi scrivere a <a href="mailto:prodanalessandro1906@gmail.com">prodanalessandro1906@gmail.com</a>.</p>
+    <p>VoltaPagina è un progetto indipendente e non è un sito ufficiale né un servizio gestito dalla scuola.</p>
+
+    <h2>2. Quali dati vengono trattati?</h2>
+    <h3>Annunci di ripetizioni</h3>
+    <p>Puoi inserire: nome visualizzato, classe o livello, materia, modalità (online o in presenza), descrizione, disponibilità, condizioni e un recapito email e/o un nome utente Instagram.</p>
+    <h3>Annunci di libri usati</h3>
+    <p>Puoi inserire: titolo, autore, materia, prezzo, condizioni, classe o livello, note, fino a tre fotografie e un recapito email oppure Instagram.</p>
+    <h3>Codici privati</h3>
+    <p>Per ritirare un annuncio o segnare un libro come venduto il sito genera un codice privato. Il codice viene mostrato a chi pubblica l'annuncio; sul database viene conservata una sua versione protetta (hash), non il codice in chiaro. Conservalo e non condividerlo.</p>
+    <h3>Dati tecnici</h3>
+    <p>I fornitori tecnici possono trattare dati necessari a caricare le pagine e proteggere i propri servizi, come indirizzo IP, informazioni sul browser e sul dispositivo, data e ora della richiesta e log tecnici. VoltaPagina non utilizza questi dati per creare profili pubblicitari.</p>
+
+    <h2>3. Perché vengono utilizzati?</h2>
+    <ul>
+      <li>per ricevere, verificare, approvare, mostrare e gestire gli annunci;</li>
+      <li>per permettere a chi pubblica un annuncio di ritirarlo o segnarlo come venduto tramite il codice privato;</li>
+      <li>per mostrare agli altri visitatori le informazioni e i recapiti inseriti nell'annuncio;</li>
+      <li>per moderare i contenuti e mantenere il sito sicuro e funzionante;</li>
+      <li>per rispondere alle richieste relative alla privacy.</li>
+    </ul>
+    <p>I dati non vengono venduti e non vengono utilizzati per pubblicità personalizzata o profilazione.</p>
+
+    <h2>4. Qual è la base giuridica?</h2>
+    <p>La base giuridica deve essere individuata per ciascuna attività di trattamento, distinguendo i dati necessari a gestire la funzione richiesta, le attività di sicurezza e moderazione e gli eventuali trattamenti basati sul consenso. Non tutte le attività devono necessariamente basarsi sul consenso.</p>
+    <div class="note"><strong>Da completare prima della pubblicazione:</strong> la base giuridica di ogni trattamento deve essere verificata in concreto. In particolare, va valutato con attenzione il trattamento dei dati di studenti minorenni e l'eventuale applicazione delle regole sul consenso.</div>
+
+    <h2>5. Chi può vedere i dati?</h2>
+    <ul>
+      <li><strong>Visitatori del sito:</strong> possono vedere gli annunci approvati. Nei dettagli degli annunci di ripetizioni possono essere mostrati i recapiti inseriti; negli annunci dei libri il recapito scelto può essere raggiungibile tramite il pulsante di contatto. Le fotografie dei libri approvati sono pubbliche.</li>
+      <li><strong>Gestore del progetto:</strong> può accedere ai dati necessari per moderare e amministrare gli annunci.</li>
+      <li><strong>Fornitori tecnici:</strong> GitHub Pages ospita le pagine del sito; Supabase fornisce database, autenticazione e archivio delle fotografie; jsDelivr distribuisce la libreria tecnica utilizzata dal sito.</li>
+    </ul>
+    <p>Quando pubblichi un recapito o una fotografia, considera che può essere visto, copiato o salvato da altre persone. Inserisci solo le informazioni necessarie e non aggiungere dati personali di altre persone.</p>
+
+    <h2>6. Dove sono conservati i dati?</h2>
+    <p>Il database principale e l'archivio dei file di Supabase sono configurati nella regione di Francoforte, in Germania. Questo non significa che ogni trattamento tecnico avvenga esclusivamente lì: alcuni servizi accessori, come la distribuzione globale delle immagini tramite CDN, i log operativi o l'assistenza tecnica, possono coinvolgere infrastrutture o personale situati in altri Paesi.</p>
+    <p>GitHub Pages e jsDelivr sono servizi esterni. Quando il browser li contatta per caricare il sito o la libreria, i rispettivi fornitori possono trattare dati tecnici della connessione secondo le proprie informative. Le eventuali localizzazioni e garanzie per i trasferimenti devono essere verificate nelle condizioni aggiornate dei fornitori.</p>
+
+    <h2>7. Per quanto tempo vengono conservati?</h2>
+    <p>Gli annunci approvati restano online finché sono attivi. Quando vengono ritirati, chiusi o segnati come venduti, non sono più mostrati nella bacheca pubblica. Il criterio di conservazione previsto dal progetto è cancellarli, insieme alle fotografie associate quando presenti, entro sei mesi dall'evento indicato.</p>
+    <ul>
+      <li>annunci di ripetizioni ritirati o chiusi: entro sei mesi dal ritiro o dalla chiusura;</li>
+      <li>annunci di libri segnati come venduti: entro sei mesi dalla segnalazione di vendita;</li>
+      <li>annunci rifiutati o mai approvati: entro sei mesi dalla data di invio.</li>
+    </ul>
+    <div class="note"><strong>Importante:</strong> la cancellazione non è automatica. Il gestore effettua manualmente controlli e cancellazioni. Il termine di sei mesi è il periodo massimo previsto dal progetto, non una funzione automatizzata del sito. Per i libri, la cancellazione deve comprendere anche le fotografie associate: va utilizzata e verificata la funzione di eliminazione del pannello amministrativo.</div>
+
+    <h2>8. Bozze e proposte salvate sul dispositivo</h2>
+    <p>Alcune funzioni di anteprima salvano bozze di annunci o proposte nel localStorage del browser. Questi contenuti restano nel browser del dispositivo che stai usando e non vengono inviati al server di VoltaPagina. Puoi eliminarli dalla funzione disponibile sul sito oppure cancellando i dati del sito nelle impostazioni del browser.</p>
+
+    <h2>9. Minorenni e uso del sito</h2>
+    <p>VoltaPagina è pensato anche per studenti minorenni. Il sito non chiede la data di nascita e non effettua una verifica automatica dell'età. Prima di inserire un recapito o una fotografia, valuta attentamente se sia davvero necessario e ricorda che un annuncio approvato può essere visibile pubblicamente.</p>
+    <p>In Italia, la soglia dei 14 anni riguarda il consenso al trattamento nell'ambito dell'offerta diretta di servizi della società dell'informazione quando la base giuridica è il consenso: sotto i 14 anni, in quel caso, il consenso deve essere prestato da chi esercita la responsabilità genitoriale. Questa regola non si applica automaticamente a ogni trattamento di dati di minorenni: occorre valutare la base giuridica della specifica attività.</p>
+    <p>Se non sai se pubblicare un dato, chiedi prima a un genitore o a un adulto di fiducia. Non inserire indirizzi di casa, numeri di telefono, dati sanitari o informazioni personali non necessarie.</p>
+
+    <h2>10. I tuoi diritti</h2>
+    <p>Nei casi previsti dal GDPR puoi chiedere di accedere ai dati, correggerli, chiederne la cancellazione o la limitazione, opporti ai trattamenti basati sul legittimo interesse e, quando applicabile, ricevere i dati in formato portabile. Se un trattamento si basa sul consenso, puoi revocarlo senza pregiudicare quanto avvenuto prima della revoca.</p>
+    <p>Per esercitare un diritto scrivi a <a href="mailto:prodanalessandro1906@gmail.com">prodanalessandro1906@gmail.com</a>, spiegando la richiesta e indicando l'annuncio interessato, se presente. Puoi inoltre proporre reclamo al <a href="https://www.garanteprivacy.it/" target="_blank" rel="noopener noreferrer">Garante per la protezione dei dati personali</a>.</p>
+
+    <h2>11. Decisioni automatiche e aggiornamenti</h2>
+    <p>Le decisioni di approvare o rifiutare gli annunci sono prese dal gestore e non da un sistema automatizzato. Non vengono effettuate profilazioni. Questa informativa dovrà essere aggiornata se cambiano le funzioni del sito, i fornitori o le modalità di trattamento.</p>
+
+    <div class="contact">
+      <h2 style="margin-top:0">Hai una domanda sulla privacy?</h2>
+      <p>Scrivi al gestore del progetto: <a href="mailto:prodanalessandro1906@gmail.com">prodanalessandro1906@gmail.com</a>.</p>
+      <p style="font-size:11px;color:#d4d8ce">VoltaPagina · Progetto studentesco indipendente · Non è un servizio ufficiale dell'istituto.</p>
+    </div>
+  </main>
+  <footer>© 2026 VoltaPagina · <a href="./">Torna alla home</a></footer>
+</body>
+</html>
